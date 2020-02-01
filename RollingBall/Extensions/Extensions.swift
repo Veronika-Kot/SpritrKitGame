@@ -39,18 +39,17 @@ extension GameScene: SKPhysicsContactDelegate {
         secondBody = contact.bodyA
       }
      
-//      if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
-//          (secondBody.categoryBitMask & PhysicsCategory.star != 0)) {
-//        if let player = firstBody.node as? SKSpriteNode,
-//         let star = secondBody.node as? SKSpriteNode {
+      if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
+          (secondBody.categoryBitMask & PhysicsCategory.star != 0)) {
+        if let player = firstBody.node as? SKSpriteNode,
+         let star = secondBody.node as? SKSpriteNode {
 //          playerGetAStar(star: star)
-//        }
-//      }
-//      
-//        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
-//                 (secondBody.categoryBitMask & PhysicsCategory.platform != 0)) {
-//             print("Boom")
-//             canJump = true
-//        }
+        }
+      }
+
+        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
+                 (secondBody.categoryBitMask & PhysicsCategory.platform != 0)) {
+            ball?.canJump = true
+        }
     }
 }

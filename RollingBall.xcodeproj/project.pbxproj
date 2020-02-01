@@ -20,6 +20,7 @@
 		7B5FB74723E4E6DD0040EEBC /* MathSignsOverloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB74623E4E6DD0040EEBC /* MathSignsOverloads.swift */; };
 		7B5FB74923E4E75B0040EEBC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB74823E4E75B0040EEBC /* Extensions.swift */; };
 		7B5FB74B23E4EA020040EEBC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB74A23E4EA020040EEBC /* Player.swift */; };
+		7B5FB74E23E6132E0040EEBC /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB74D23E6132E0040EEBC /* Platform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		7B5FB74623E4E6DD0040EEBC /* MathSignsOverloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSignsOverloads.swift; sourceTree = "<group>"; };
 		7B5FB74823E4E75B0040EEBC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B5FB74A23E4EA020040EEBC /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		7B5FB74D23E6132E0040EEBC /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				7B5FB74123E4E6200040EEBC /* GameProtocol.swift */,
 				7B5FB74323E4E6730040EEBC /* GameObjects.swift */,
 				7B5FB74A23E4EA020040EEBC /* Player.swift */,
+				7B5FB74D23E6132E0040EEBC /* Platform.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5FB74E23E6132E0040EEBC /* Platform.swift in Sources */,
 				7B5FB74423E4E6730040EEBC /* GameObjects.swift in Sources */,
 				7B5FB72F23E4E54E0040EEBC /* GameScene.swift in Sources */,
 				7B5FB74223E4E6200040EEBC /* GameProtocol.swift in Sources */,

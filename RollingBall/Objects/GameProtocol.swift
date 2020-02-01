@@ -6,9 +6,9 @@
 
 protocol GameProtocol
 {
-    func Reset()
+    func Setup()
     
-    func Start()
+    func Reset()
     
     func Update()
 }

@@ -13,28 +13,15 @@ class GameObject: SKSpriteNode, GameProtocol
 {
     var scale: CGFloat?
     
-    init(imageString: String, initialScale: CGFloat){
-            
-            let texture = SKTexture(imageNamed: imageString)
-            let color = UIColor.clear
-            super.init(texture: texture, color: color, size: texture.size())
-            
-            self.scale = initialScale
-            self.setScale(scale!)
-        
-            self.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: imageString), size: self.size)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            //fatalError("init(coder:) has not been implemented")
-        }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     func Reset() {
         
     }
     
-    func Start() {
+    func Setup() {
         
     }
     
