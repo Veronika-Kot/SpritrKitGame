@@ -14,11 +14,6 @@ let motionManager = CMMotionManager()
 var ball: Player?
 
 class GameScene: SKScene {
-    
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
-//    var ball: Player?
     var cam: SKCameraNode?
     
     let swipeRight = UISwipeGestureRecognizer()
@@ -106,6 +101,6 @@ class GameScene: SKScene {
         ball?.Update()
         
         cam?.position = CGPoint(x: (ball?.position)!.x,
-        y: (ball?.position)!.y)
+                                y: 0)
     }
 }
