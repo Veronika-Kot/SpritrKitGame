@@ -13,33 +13,62 @@ class Player : GameObject
     var canJump = false
     var hitIce = false
     var goTo2ndLevel = false
+    private var playerRunFrames: [SKTexture] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override func Setup() {
-        self.texture = SKTexture(imageNamed: "ball")
-        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.height/2)
-        //SKPhysicsBody(texture: SKTexture(imageNamed: "ball"), size: self.size)
+        let runAnimatedAtlas = SKTextureAtlas(named: "run")
+        var walkFrames: [SKTexture] = []
         
+        let numImages = runAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+          let runTextureName = "player-run-\(i)"
+          walkFrames.append(runAnimatedAtlas.textureNamed(runTextureName))
+        }
+        playerRunFrames = walkFrames
+        
+        self.setScale(1.7)
+        self.texture = playerRunFrames[0]
+        
+        self.physicsBody =
+            SKPhysicsBody(texture: playerRunFrames[0], size: CGSize(width: self.texture!.size().width * 2, height: self.texture!.size().height * 2.5))
+//            SKPhysicsBody(circleOfRadius: self.size.height * 0.5)
         if let physics = self.physicsBody {
             
             physics.isDynamic = true
-            physics.allowsRotation = true
+            physics.allowsRotation = false
+            physics.angularVelocity = 0
             physics.affectedByGravity = true
-            physics.linearDamping = 0.85
-            physics.angularDamping = 0.85
-            physics.friction = 0.5
+            physics.linearDamping = 0.5
+            physics.angularDamping = 0.2
+            physics.friction = 0.1
+            physics.mass = 1.0
+            
+            physics.usesPreciseCollisionDetection = true
+            
             physics.categoryBitMask = PhysicsCategory.player
             physics.contactTestBitMask = PhysicsCategory.cherry
             physics.contactTestBitMask = PhysicsCategory.platform
             physics.collisionBitMask = PhysicsCategory.platform
+            
+            
         }
     }
     
     override func Reset() {
         
+    }
+    
+    func animateRun() {
+      self.run(SKAction.repeatForever(
+        SKAction.animate(with: playerRunFrames,
+                         timePerFrame: 0.1,
+                         resize: false,
+                         restore: true)),
+        withKey:"animateRun")
     }
     
     func GetItem(item: SKSpriteNode) {
@@ -80,13 +109,18 @@ class Player : GameObject
         let xLimitRight = 10000.0 - self.size.width * 0.5 - self.size.width * 0.5
         
         if let accelerometerData = motionManager.accelerometerData {
+            
             if (accelerometerData.acceleration.y < -0.2 && self.position.x <= xLimitRight) {
+                
+                self.xScale = abs(self.xScale) * 1
                 
                 let velX: CGFloat = UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ? 500 : 500
                 
                 self.physicsBody?.velocity = CGVector(dx: velX, dy: self.physicsBody!.velocity.dy)
                 
             } else if (accelerometerData.acceleration.y > 0.2 && self.position.x >= xLimitLeft) {
+                
+                self.xScale = abs(self.xScale) * -1
                 
                 let velX: CGFloat = UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ? -500 : -500
                 

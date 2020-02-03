@@ -39,6 +39,8 @@ class Level1: SKScene {
             ball!.Setup()
         }
         
+        ball!.animateRun()
+        
         if let aPortal = self.childNode(withName: "portal") as? Item {
             self.portal = aPortal
             portal!.Setup()

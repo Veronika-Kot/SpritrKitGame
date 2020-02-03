@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B43540E23E8B93C000306C2 /* run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B43540D23E8B93C000306C2 /* run.atlas */; };
 		7B5FB72923E4E54E0040EEBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB72823E4E54E0040EEBC /* AppDelegate.swift */; };
 		7B5FB72D23E4E54E0040EEBC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B5FB72C23E4E54E0040EEBC /* Actions.sks */; };
 		7B5FB73123E4E54E0040EEBC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB73023E4E54E0040EEBC /* GameViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B43540D23E8B93C000306C2 /* run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = run.atlas; sourceTree = "<group>"; };
 		7B5FB72523E4E54E0040EEBC /* RollingBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollingBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5FB72823E4E54E0040EEBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5FB72C23E4E54E0040EEBC /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 			name = Texture;
 			sourceTree = "<group>";
 		};
+		7B43540C23E8B928000306C2 /* Atlasses */ = {
+			isa = PBXGroup;
+			children = (
+				7B43540D23E8B93C000306C2 /* run.atlas */,
+			);
+			path = Atlasses;
+			sourceTree = "<group>";
+		};
 		7B5FB71C23E4E54E0040EEBC = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		7B5FB72723E4E54E0040EEBC /* RollingBall */ = {
 			isa = PBXGroup;
 			children = (
+				7B43540C23E8B928000306C2 /* Atlasses */,
 				7BA2F8FF23E7C9CE00E3A24E /* Managers */,
 				7B02F41923E75A28003C4F98 /* Texture */,
 				7B5FB74C23E60D160040EEBC /* Scenes */,
@@ -211,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5FB73423E4E54E0040EEBC /* Main.storyboard in Resources */,
+				7B43540E23E8B93C000306C2 /* run.atlas in Resources */,
 				7B5FB73623E4E5500040EEBC /* Assets.xcassets in Resources */,
 				7B5FB73923E4E5500040EEBC /* LaunchScreen.storyboard in Resources */,
 				7BA2F8FA23E7BCAD00E3A24E /* StartScene.sks in Resources */,
