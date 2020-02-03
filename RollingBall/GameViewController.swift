@@ -51,11 +51,21 @@ class GameViewController: UIViewController, GameManager {
     
     func loadGameScene(level: Int) {
         if let view = self.view as! SKView? {
+            
+            if level == 1 {
                if let scene = Level1(fileNamed: "Level1") {
                    scene.scaleMode = .aspectFill
                    scene.gameManager = self
                    view.presentScene(scene)
                }
+            } else if level == 2 {
+                if let scene = Level1(fileNamed: "Level2") {
+                    scene.scaleMode = .aspectFill
+                    scene.gameManager = self
+                    view.presentScene(scene)
+                }
+            }
+            
                
                view.ignoresSiblingOrder = true
                

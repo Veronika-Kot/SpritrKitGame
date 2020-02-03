@@ -1,8 +1,8 @@
 //
-//  Level1.swift
+//  Level2.swift
 //  RollingBall
 //
-//  Created by Veronika Kotckovich on 1/31/20.
+//  Created by Veronika Kotckovich on 2/2/20.
 //  Copyright © 2020 centennial. All rights reserved.
 //
 
@@ -10,10 +10,7 @@ import SpriteKit
 import GameplayKit
 import CoreMotion
 
-let motionManager = CMMotionManager()
-var ball: Player?
-
-class Level1: SKScene {
+class Level2: SKScene {
     var cam: SKCameraNode?
     
     let swipeRight = UISwipeGestureRecognizer()
@@ -23,8 +20,6 @@ class Level1: SKScene {
     var slideGesture = false
     
     var gameManager: GameManager?
-    
-    var portal: Item?
     
     override func didMove(to view: SKView) {
         
@@ -37,11 +32,6 @@ class Level1: SKScene {
         if let aPlayer:Player = self.childNode(withName: "Player") as? Player {
             ball = aPlayer
             ball!.Setup()
-        }
-        
-        if let aPortal = self.childNode(withName: "portal") as? Item {
-            self.portal = aPortal
-            portal!.Setup()
         }
         
         
@@ -94,13 +84,6 @@ class Level1: SKScene {
         swipeUp.addTarget(self, action: #selector(Level1.swiped) )
         swipeUp.direction = .up
         self.view!.addGestureRecognizer(swipeUp)
-        
-        
-        let oneRotation:SKAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: 1)
-        
-        let repeatRotation:SKAction = SKAction.repeatForever(oneRotation)
-                
-        self.portal?.run(repeatRotation)
     }
     
     @objc func swiped() {
@@ -143,10 +126,6 @@ class Level1: SKScene {
             gameManager?.loadStartScene()
         }
         
-        if  ball!.goTo2ndLevel {
-             gameManager?.loadGameScene(level: 2)
-        }
-        
         if ball?.canJump ?? true && self.slideGesture {
             ball?.Jump()
             self.slideGesture = false
@@ -165,3 +144,4 @@ class Level1: SKScene {
                                 y: self.size.height / 2)
     }
 }
+

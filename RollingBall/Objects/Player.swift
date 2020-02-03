@@ -12,6 +12,7 @@ class Player : GameObject
 {
     var canJump = false
     var hitIce = false
+    var goTo2ndLevel = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -56,6 +57,10 @@ class Player : GameObject
         if (item.name == "ice" && !hitIce) {
             hitIce = true
             ScoreManager.Lives -= 1
+        }
+        
+        if (item.name == "portal") {
+            self.goTo2ndLevel = true
         }
     }
     
