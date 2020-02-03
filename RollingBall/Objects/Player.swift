@@ -12,8 +12,6 @@ class Player : GameObject
 {
     var canJump = false
     var hitIce = false
-    var numCherries = 0
-    var numLives = 5
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -46,22 +44,18 @@ class Player : GameObject
     func GetItem(item: SKSpriteNode) {
         
         if (item.name == "cherry") {
-            self.numCherries += 1
+            ScoreManager.Score += 1
             item.removeFromParent()
         }
         
         if (item.name == "heart") {
-            self.numLives += 1
+            ScoreManager.Lives += 1
             item.removeFromParent()
         }
         
         if (item.name == "ice" && !hitIce) {
             hitIce = true
-            self.numLives -= 1
-            
-            if self.numLives < 1 {
-                print("Game over")
-            }
+            ScoreManager.Lives -= 1
         }
     }
     

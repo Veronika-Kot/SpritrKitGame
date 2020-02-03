@@ -15,10 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mainBack" translatesAutoresizingMaskIntoConstraints="NO" id="Hbf-kb-zXS">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBw-sb-M0N">
                                 <rect key="frame" x="362" y="182" width="173" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -30,12 +26,41 @@
                                     <action selector="newGamePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8it-o3-hPq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phY-0B-Qby">
+                                <rect key="frame" x="32" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="0FQ-st-Z3M"/>
+                                    <constraint firstAttribute="height" constant="35" id="gIP-Au-Zmc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="5" backgroundImage="heart">
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNt-94-wBp">
+                                <rect key="frame" x="829" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="05J-K1-Lnh"/>
+                                    <constraint firstAttribute="height" constant="35" id="Kk4-CS-JoS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="0" backgroundImage="cherry">
+                                    <color key="titleColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qNt-94-wBp" secondAttribute="trailing" constant="32" id="1vG-8Q-wMT"/>
+                            <constraint firstItem="phY-0B-Qby" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="32" id="82E-2U-YdD"/>
+                            <constraint firstItem="phY-0B-Qby" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="FKb-vj-lXX"/>
+                            <constraint firstItem="qNt-94-wBp" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="dFN-76-4zt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
-                        <outlet property="backgroundImage" destination="Hbf-kb-zXS" id="5yI-Ia-DW5"/>
+                        <outlet property="cherryView" destination="qNt-94-wBp" id="eVF-VA-oBu"/>
+                        <outlet property="lifeView" destination="phY-0B-Qby" id="a25-2K-6eD"/>
                         <outlet property="newGameButtom" destination="WBw-sb-M0N" id="vOV-Da-4IV"/>
                     </connections>
                 </viewController>
@@ -45,6 +70,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mainBack" width="1995" height="750"/>
+        <image name="cherry" width="68" height="68"/>
+        <image name="heart" width="64" height="64"/>
     </resources>
 </document>

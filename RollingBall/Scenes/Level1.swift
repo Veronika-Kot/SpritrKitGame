@@ -22,6 +22,8 @@ class Level1: SKScene {
     
     var slideGesture = false
     
+    var gameManager: GameManager?
+    
     override func didMove(to view: SKView) {
         
         backgroundColor = UIColor.white
@@ -118,8 +120,16 @@ class Level1: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         
-        if ball?.canJump ?? true && self.slideGesture {
+        gameManager?.updateLiveView()
+        gameManager?.updateCherryView()
+        
+        if ScoreManager.Lives <= 0 {
+            self.removeFromParent()
             
+            gameManager?.loadStartScene()
+        }
+        
+        if ball?.canJump ?? true && self.slideGesture {
             ball?.Jump()
             self.slideGesture = false
         }
