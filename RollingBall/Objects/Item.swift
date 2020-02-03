@@ -1,14 +1,14 @@
 //
-//  Platform.swift
+//  Item.swift
 //  RollingBall
 //
-//  Created by Veronika Kotckovich on 2/1/20.
+//  Created by Veronika Kotckovich on 2/2/20.
 //  Copyright © 2020 centennial. All rights reserved.
 //
 
 import SpriteKit
 
-class Platform : GameObject
+class Item : GameObject
 {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -16,17 +16,18 @@ class Platform : GameObject
     }
     
     override func Setup() {
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)   
-//        self.physicsBody = SKPhysicsBody(texture: self.texture?, size: self.size)
+        
+//        self.texture = SKTexture(imageNamed: "cherry")
+        
+       self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.size)
         
         if let physics = self.physicsBody {
             physics.isDynamic = false
             physics.allowsRotation = false
             physics.affectedByGravity = false
             
-            physics.categoryBitMask = PhysicsCategory.platform
+            physics.categoryBitMask = PhysicsCategory.cherry
             physics.contactTestBitMask = PhysicsCategory.player
-            physics.collisionBitMask = PhysicsCategory.player
         }
     }
     
@@ -38,4 +39,6 @@ class Platform : GameObject
         
     }
 }
+
+
 
