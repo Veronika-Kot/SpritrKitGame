@@ -16,8 +16,7 @@ class Platform : GameObject
     }
     
     override func Setup() {
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)   
-//        self.physicsBody = SKPhysicsBody(texture: self.texture?, size: self.size)
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         
         if let physics = self.physicsBody {
             physics.isDynamic = false

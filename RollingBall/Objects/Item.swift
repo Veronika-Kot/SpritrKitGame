@@ -26,7 +26,7 @@ class Item : GameObject
             physics.allowsRotation = false
             physics.affectedByGravity = false
             
-            physics.categoryBitMask = PhysicsCategory.cherry
+            physics.categoryBitMask = PhysicsCategory.item
             physics.contactTestBitMask = PhysicsCategory.player
         }
     }

@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 import CoreMotion
+import AVFoundation
 
 let motionManager = CMMotionManager()
 var ball: Player?
@@ -19,6 +20,7 @@ class Level1: SKScene {
     let swipeRight = UISwipeGestureRecognizer()
     let swipeLeft = UISwipeGestureRecognizer()
     let swipeUp = UISwipeGestureRecognizer()
+    let tap = UITapGestureRecognizer()
     
     var slideGesture = false
     
@@ -27,6 +29,10 @@ class Level1: SKScene {
     var portal: Item?
     
     override func didMove(to view: SKView) {
+        
+//        let backgroundSound = SKAudioNode(fileNamed: "2630541_riddle-for-the-witty_by_ionics_preview.mp3")
+//        backgroundSound.autoplayLooped = true
+//        self.addChild(backgroundSound)
         
         backgroundColor = UIColor.white
         physicsWorld.contactDelegate = self
@@ -38,8 +44,6 @@ class Level1: SKScene {
             ball = aPlayer
             ball!.Setup()
         }
-        
-        ball!.animateRun()
         
         if let aPortal = self.childNode(withName: "portal") as? Item {
             self.portal = aPortal
@@ -97,6 +101,9 @@ class Level1: SKScene {
         swipeUp.direction = .up
         self.view!.addGestureRecognizer(swipeUp)
         
+        tap.addTarget(self, action: #selector(Level1.tapped) )
+               self.view!.addGestureRecognizer(tap)
+        
         
         let oneRotation:SKAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: 1)
         
@@ -109,8 +116,11 @@ class Level1: SKScene {
         self.slideGesture = true
     }
     
+    @objc func tapped() {
+        print("Hello")
+    }
+    
     func touchDown(atPoint pos : CGPoint) {
-        
     }
     
     func touchMoved(toPoint pos : CGPoint) {

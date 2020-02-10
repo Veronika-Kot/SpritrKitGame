@@ -21,6 +21,8 @@ class Level2: SKScene {
     
     var gameManager: GameManager?
     
+    var thePlayer: Player?
+    
     override func didMove(to view: SKView) {
         
         backgroundColor = UIColor.white
@@ -29,11 +31,30 @@ class Level2: SKScene {
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates()
         
+        
         if let aPlayer:Player = self.childNode(withName: "Player") as? Player {
+            
             ball = aPlayer
             ball!.Setup()
         }
         
+        enumerateChildNodes(withName: "opossum") {
+            node, stop in
+            
+            if let enemy:Enemy = node as? Enemy {
+                enemy.Setup(name: "opossum", repeatAnim: 2)
+                enemy.animateEnemyRun()
+            }
+        }
+        
+        enumerateChildNodes(withName: "eagle") {
+            node, stop in
+            
+            if let enemy:Enemy = node as? Enemy {
+                enemy.Setup(name: "eagle", repeatAnim: 5)
+                enemy.animateEnemyRun()
+            }
+        }
         
         enumerateChildNodes(withName: "platform") {
             node, stop in
@@ -133,15 +154,35 @@ class Level2: SKScene {
         
         ball?.Update()
         
+        enumerateChildNodes(withName: "opossum") {
+            node, stop in
+            
+            if let enemy:Enemy = node as? Enemy {
+                enemy.Update()
+            }
+        }
+        
+        enumerateChildNodes(withName: "eagle") {
+            node, stop in
+            
+            if let enemy:Enemy = node as? Enemy {
+                enemy.Update()
+            }
+        }
+        
         let xLimitLeft = self.size.width * 0.5
         let xLimitRight = 10000.0 - self.size.width * 0.5
         
         var cameraX1 = (ball?.position)!.x <= xLimitLeft ? xLimitLeft : (ball?.position)!.x
         
         var cameraX2 = (ball?.position)!.x >= xLimitRight ? xLimitRight : cameraX1
-            
+        
         cam?.position = CGPoint(x: cameraX2,
                                 y: self.size.height / 2)
+    }
+    
+    override public func didBegin(_ contact: SKPhysicsContact) {
+        super.didBegin(contact)
     }
 }
 

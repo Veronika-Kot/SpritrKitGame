@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameViewController: UIViewController, GameManager {
     
@@ -19,6 +20,19 @@ class GameViewController: UIViewController, GameManager {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+do {
+    let sounds:[String] = ["magicalThing"]
+    for sound in sounds {
+        let path: String = Bundle.main.path(forResource: sound, ofType: "mp3")!
+        let url: URL = URL(fileURLWithPath: path)
+        let player: AVAudioPlayer = try AVAudioPlayer(contentsOf: url)
+        player.prepareToPlay()
+        
+        }
+    } catch {
+    
+}
         
         loadStartScene()
         updateLiveView()
@@ -59,7 +73,7 @@ class GameViewController: UIViewController, GameManager {
                    view.presentScene(scene)
                }
             } else if level == 2 {
-                if let scene = Level1(fileNamed: "Level2") {
+                if let scene = Level2(fileNamed: "Level2") {
                     scene.scaleMode = .aspectFill
                     scene.gameManager = self
                     view.presentScene(scene)

@@ -12,7 +12,7 @@ struct PhysicsCategory {
     static let none     : UInt32 = 0
     static let all      : UInt32 = UInt32.max
     static let player   : UInt32 = 0b1
-    static let cherry     : UInt32 = 0b10
+    static let item     : UInt32 = 0b10
     static let platform : UInt32 = 0b100
 }
 
@@ -40,10 +40,10 @@ extension SKScene: SKPhysicsContactDelegate {
       }
      
       if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
-          (secondBody.categoryBitMask & PhysicsCategory.cherry != 0)) {
+          (secondBody.categoryBitMask & PhysicsCategory.item != 0)) {
         if let player = firstBody.node as? SKSpriteNode,
          let item = secondBody.node as? SKSpriteNode {
-            ball?.GetItem(item: item)
+            ball?.GetItem(item: item, scene: self)
         }
       }
 
