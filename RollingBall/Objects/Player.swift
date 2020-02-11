@@ -14,15 +14,21 @@ class Player : GameObject
         case run
         case idle
         case runJump
+        case die
     }
     
     var canJump = false
+    var dying = false
     var hitObsticle = false
     var goTo2ndLevel = false
     var jumping = false
+    var direction:CGFloat = 1.0
     private var playerRunFrames: [SKTexture] = []
     private var playerIdleFrames: [SKTexture] = []
     private var playerJumpFrames: [SKTexture] = []
+    private var playerDieFrames: [SKTexture] = []
+    
+    var bullets: (key: Int, list:[Bulet])?
     
     var animation: anim = .run
     
@@ -35,11 +41,11 @@ class Player : GameObject
         //Setup running animation
         let runAnimatedAtlas = SKTextureAtlas(named: "run")
         var walkFrames: [SKTexture] = []
-
+        
         let numImages = runAnimatedAtlas.textureNames.count
         for i in 1...numImages {
-          let runTextureName = "player-run-\(i)"
-          walkFrames.append(runAnimatedAtlas.textureNamed(runTextureName))
+            let runTextureName = "player-run-\(i)"
+            walkFrames.append(runAnimatedAtlas.textureNamed(runTextureName))
         }
         playerRunFrames = walkFrames
         
@@ -49,8 +55,8 @@ class Player : GameObject
         var idleFrames: [SKTexture] = []
         
         for i in 1...numImages2 {
-          let idleTextureName = "player-idle-\(i)"
-          idleFrames.append(idleAnimatedAtlas.textureNamed(idleTextureName))
+            let idleTextureName = "player-idle-\(i)"
+            idleFrames.append(idleAnimatedAtlas.textureNamed(idleTextureName))
         }
         playerIdleFrames = idleFrames
         
@@ -61,10 +67,21 @@ class Player : GameObject
         var jumpFrames: [SKTexture] = []
         
         for i in 1...numImages3 {
-          let jumpTextureName = "player-jump-\(i)"
-          jumpFrames.append(jumpAnimatedAtlas.textureNamed(jumpTextureName))
+            let jumpTextureName = "player-jump-\(i)"
+            jumpFrames.append(jumpAnimatedAtlas.textureNamed(jumpTextureName))
         }
         playerJumpFrames = jumpFrames
+        
+        //Setup die animation
+        let dieAnimatedAtlas = SKTextureAtlas(named: "hurt")
+        var dieFrames: [SKTexture] = []
+        
+        let numImages1 = dieAnimatedAtlas.textureNames.count
+        for i in 1...numImages1 {
+            let runTextureName = "player-hurt-\(i)"
+            dieFrames.append(dieAnimatedAtlas.textureNamed(runTextureName))
+        }
+        playerDieFrames = dieFrames
         
         
         self.setScale(1.7)
@@ -82,67 +99,90 @@ class Player : GameObject
             physics.angularDamping = 0.5
             physics.friction = 0
             physics.mass = 1.0
-            
-//            physics.usesPreciseCollisionDetection = true
-            
+                        
             physics.categoryBitMask = PhysicsCategory.player
             physics.contactTestBitMask = PhysicsCategory.item
+            physics.contactTestBitMask = PhysicsCategory.enemy
             physics.contactTestBitMask = PhysicsCategory.platform
             physics.collisionBitMask = PhysicsCategory.platform
             
             
         }
     }
+    
+    func setupBullets() {
+        var tempArray = [Bulet]()
+        for _ in 1...50 {
+            let bullet = Bulet()
+            tempArray.append(bullet)
+        }
+        
+        self.bullets = (key: 0, list: tempArray);
+    }
+    
     override func Reset() {
         self.position = CGPoint(x: 300, y: 720)
-        hitObsticle = false
+        self.hitObsticle = false
+        self.dying = false
+        self.animation = .idle
     }
     
     func animateRun() {
         if animation == .run {
             self.removeAction(forKey: "animateIdle")
-//            self.removeAction(forKey: "animateJump")
             
             if self.action(forKey: "animateRun") == nil {
                 self.run(SKAction.repeatForever(
-                SKAction.animate(with: playerRunFrames,
-                                 timePerFrame: 0.1,
-                                 resize: false,
-                                 restore: true)),
-                withKey:"animateRun")
+                    SKAction.animate(with: playerRunFrames,
+                                     timePerFrame: 0.1,
+                                     resize: false,
+                                     restore: true)),
+                         withKey:"animateRun")
             }
-        
+            
         }
         else if animation == .idle {
-             self.removeAction(forKey: "animateRun")
-//             self.removeAction(forKey: "animateJump")
-            
-             if self.action(forKey: "animateIdle") == nil {
+            self.removeAction(forKey: "animateRun")
+            if self.action(forKey: "animateIdle") == nil {
                 self.run(SKAction.repeatForever(
-                SKAction.animate(with: playerIdleFrames,
-                                 timePerFrame: 0.1,
-                                 resize: false,
-                                 restore: true)),
-                withKey:"animateIdle")
+                    SKAction.animate(with: playerIdleFrames,
+                                     timePerFrame: 0.1,
+                                     resize: false,
+                                     restore: true)),
+                         withKey:"animateIdle")
             }
         }
         else if animation == .runJump {
-             self.removeAction(forKey: "animateRun")
-             self.removeAction(forKey: "animateIdle")
-
+            self.removeAction(forKey: "animateRun")
+            self.removeAction(forKey: "animateIdle")
             
-//             if self.action(forKey: "animateJump") == nil {
             if !jumping {
                 jumping = true
                 self.run(SKAction.animate(with: playerJumpFrames,
-                                 timePerFrame: 0.1,
-                                 resize: false,
-                                 restore: true),
-                 completion: {() -> Void in
-                    self.animation = .run
-                    self.jumping = false
+                                          timePerFrame: 0.1,
+                                          resize: false,
+                                          restore: true),
+                         completion: {() -> Void in
+                            self.animation = .run
+                            self.jumping = false
                 })
             }
+        } else if animation == .die {
+            
+            self.removeAction(forKey: "animateRun")
+            self.removeAction(forKey: "animateIdle")
+            
+            if !dying {
+            dying = true
+                self.run(SKAction.animate(with: playerDieFrames,
+                                          timePerFrame: 0.1,
+                                          resize: false,
+                                          restore: true),
+                         completion: {() -> Void in
+                            self.Reset()
+                })
+            }
+            
         }
     }
     
@@ -183,9 +223,11 @@ class Player : GameObject
     
     override func Update() {
         self.animateRun()
-    
+        
         if hitObsticle {
-            Reset()
+            self.animation = .die
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            return
         }
         
         let xLimitLeft = self.size.width * 0.5 + self.size.width * 0.5
@@ -197,6 +239,7 @@ class Player : GameObject
                 
                 self.xScale = abs(self.xScale) * 1
                 self.animation = self.animation == .runJump ? .runJump : .run
+                self.direction = 1.0
                 
                 let velX: CGFloat = UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ? 500 : 500
                 
@@ -210,6 +253,7 @@ class Player : GameObject
                 let velX: CGFloat = UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ? -500 : -500
                 
                 self.physicsBody?.velocity = CGVector(dx: velX, dy: self.physicsBody!.velocity.dy)
+                self.direction = -1.0
                 
             } else {
                 for _ in 1...5 {

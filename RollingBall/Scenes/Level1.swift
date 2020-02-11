@@ -20,7 +20,6 @@ class Level1: SKScene {
     let swipeRight = UISwipeGestureRecognizer()
     let swipeLeft = UISwipeGestureRecognizer()
     let swipeUp = UISwipeGestureRecognizer()
-    let tap = UITapGestureRecognizer()
     
     var slideGesture = false
     
@@ -101,9 +100,6 @@ class Level1: SKScene {
         swipeUp.direction = .up
         self.view!.addGestureRecognizer(swipeUp)
         
-        tap.addTarget(self, action: #selector(Level1.tapped) )
-               self.view!.addGestureRecognizer(tap)
-        
         
         let oneRotation:SKAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: 1)
         
@@ -114,10 +110,6 @@ class Level1: SKScene {
     
     @objc func swiped() {
         self.slideGesture = true
-    }
-    
-    @objc func tapped() {
-        print("Hello")
     }
     
     func touchDown(atPoint pos : CGPoint) {

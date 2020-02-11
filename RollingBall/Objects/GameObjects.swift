@@ -13,6 +13,13 @@ class GameObject: SKSpriteNode, GameProtocol
 {
     var scale: CGFloat?
     
+    init(imageString: String, initialScale: CGFloat) {
+        let texture = SKTexture(imageNamed: imageString)
+        let color = UIColor.clear
+        super.init(texture: texture, color: color, size: CGSize(width: texture.size().width * initialScale, height: texture.size().height * initialScale))
+    
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

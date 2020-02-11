@@ -48,10 +48,23 @@
                                     <color key="titleColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QP-Aj-0wY">
+                                <rect key="frame" x="776" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="NPd-qd-Yyc"/>
+                                    <constraint firstAttribute="width" constant="35" id="rBy-vL-FGl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="0" backgroundImage="BulletImage">
+                                    <color key="titleColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="qNt-94-wBp" secondAttribute="trailing" constant="32" id="1vG-8Q-wMT"/>
+                            <constraint firstItem="qNt-94-wBp" firstAttribute="leading" secondItem="5QP-Aj-0wY" secondAttribute="trailing" constant="18" id="5W0-ij-CPI"/>
+                            <constraint firstItem="5QP-Aj-0wY" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="7jw-b1-LCb"/>
                             <constraint firstItem="phY-0B-Qby" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="32" id="82E-2U-YdD"/>
                             <constraint firstItem="phY-0B-Qby" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="FKb-vj-lXX"/>
                             <constraint firstItem="qNt-94-wBp" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="dFN-76-4zt"/>
@@ -59,6 +72,7 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
+                        <outlet property="bulletView" destination="5QP-Aj-0wY" id="d31-0n-8vu"/>
                         <outlet property="cherryView" destination="qNt-94-wBp" id="eVF-VA-oBu"/>
                         <outlet property="lifeView" destination="phY-0B-Qby" id="a25-2K-6eD"/>
                         <outlet property="newGameButtom" destination="WBw-sb-M0N" id="vOV-Da-4IV"/>
@@ -70,6 +84,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BulletImage" width="36" height="35"/>
         <image name="cherry" width="68" height="68"/>
         <image name="heart" width="64" height="64"/>
     </resources>

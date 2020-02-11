@@ -13,6 +13,8 @@
 		7B0ECD0523F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B0ECD0423F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 */; };
 		7B43540E23E8B93C000306C2 /* run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B43540D23E8B93C000306C2 /* run.atlas */; };
 		7B43541A23E8F72F000306C2 /* jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B43541923E8F72F000306C2 /* jump.atlas */; };
+		7B4958A023F2638B001F746F /* enemy-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B49589F23F2638B001F746F /* enemy-death.atlas */; };
+		7B4958A223F27615001F746F /* hurt.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B4958A123F27615001F746F /* hurt.atlas */; };
 		7B5FB72923E4E54E0040EEBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB72823E4E54E0040EEBC /* AppDelegate.swift */; };
 		7B5FB72D23E4E54E0040EEBC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B5FB72C23E4E54E0040EEBC /* Actions.sks */; };
 		7B5FB73123E4E54E0040EEBC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB73023E4E54E0040EEBC /* GameViewController.swift */; };
@@ -28,6 +30,7 @@
 		7B8438AE23F1EFCB0025446F /* idle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B8438AD23F1EFCB0025446F /* idle.atlas */; };
 		7B8438B223F2179A0025446F /* gotitem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B8438B123F2179A0025446F /* gotitem.mp3 */; };
 		7B8438B823F21AAC0025446F /* magicalThing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B8438B723F21AAC0025446F /* magicalThing.mp3 */; };
+		7B8438BA23F223C50025446F /* Bulet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8438B923F223C50025446F /* Bulet.swift */; };
 		7BA2F8F823E7846F00E3A24E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2F8F723E7846F00E3A24E /* Item.swift */; };
 		7BA2F8FA23E7BCAD00E3A24E /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7BA2F8F923E7BCAD00E3A24E /* StartScene.sks */; };
 		7BA2F8FC23E7BCC700E3A24E /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2F8FB23E7BCC700E3A24E /* StartScene.swift */; };
@@ -46,6 +49,8 @@
 		7B0ECD0423F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2630541_riddle-for-the-witty_by_ionics_preview.mp3"; sourceTree = "<group>"; };
 		7B43540D23E8B93C000306C2 /* run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = run.atlas; sourceTree = "<group>"; };
 		7B43541923E8F72F000306C2 /* jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = jump.atlas; sourceTree = "<group>"; };
+		7B49589F23F2638B001F746F /* enemy-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "enemy-death.atlas"; sourceTree = "<group>"; };
+		7B4958A123F27615001F746F /* hurt.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = hurt.atlas; sourceTree = "<group>"; };
 		7B5FB72523E4E54E0040EEBC /* RollingBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollingBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5FB72823E4E54E0040EEBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5FB72C23E4E54E0040EEBC /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		7B8438AD23F1EFCB0025446F /* idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = idle.atlas; sourceTree = "<group>"; };
 		7B8438B123F2179A0025446F /* gotitem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gotitem.mp3; sourceTree = "<group>"; };
 		7B8438B723F21AAC0025446F /* magicalThing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = magicalThing.mp3; sourceTree = "<group>"; };
+		7B8438B923F223C50025446F /* Bulet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulet.swift; sourceTree = "<group>"; };
 		7BA2F8F723E7846F00E3A24E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7BA2F8F923E7BCAD00E3A24E /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		7BA2F8FB23E7BCC700E3A24E /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		7B43540C23E8B928000306C2 /* Atlasses */ = {
 			isa = PBXGroup;
 			children = (
+				7B4958A123F27615001F746F /* hurt.atlas */,
+				7B49589F23F2638B001F746F /* enemy-death.atlas */,
 				7B8438AD23F1EFCB0025446F /* idle.atlas */,
 				7B0ECD0123F1204400FDCA98 /* eagle.atlas */,
 				7B0ECCFF23F10E9F00FDCA98 /* opossum.atlas */,
@@ -152,6 +160,7 @@
 				7B5FB74D23E6132E0040EEBC /* Platform.swift */,
 				7BA2F8F723E7846F00E3A24E /* Item.swift */,
 				7B0ECCFD23F1097400FDCA98 /* Enemy.swift */,
+				7B8438B923F223C50025446F /* Bulet.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -250,11 +259,13 @@
 				7B5FB73423E4E54E0040EEBC /* Main.storyboard in Resources */,
 				7B8438B223F2179A0025446F /* gotitem.mp3 in Resources */,
 				7B43540E23E8B93C000306C2 /* run.atlas in Resources */,
+				7B4958A023F2638B001F746F /* enemy-death.atlas in Resources */,
 				7B5FB73623E4E5500040EEBC /* Assets.xcassets in Resources */,
 				7B0ECD0523F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 in Resources */,
 				7B5FB73923E4E5500040EEBC /* LaunchScreen.storyboard in Resources */,
 				7BA2F8FA23E7BCAD00E3A24E /* StartScene.sks in Resources */,
 				7B5FB72D23E4E54E0040EEBC /* Actions.sks in Resources */,
+				7B4958A223F27615001F746F /* hurt.atlas in Resources */,
 				7BA2F90323E7D21200E3A24E /* Level2.sks in Resources */,
 				7BC41AA923E7586800B7FCC3 /* Level1.sks in Resources */,
 				7B0ECD0023F10E9F00FDCA98 /* opossum.atlas in Resources */,
@@ -272,6 +283,7 @@
 			files = (
 				7BA2F8F823E7846F00E3A24E /* Item.swift in Sources */,
 				7BA2F8FE23E7BE7E00E3A24E /* GameManager.swift in Sources */,
+				7B8438BA23F223C50025446F /* Bulet.swift in Sources */,
 				7BC41AAB23E7587E00B7FCC3 /* Level1.swift in Sources */,
 				7B5FB74E23E6132E0040EEBC /* Platform.swift in Sources */,
 				7B5FB74423E4E6730040EEBC /* GameObjects.swift in Sources */,

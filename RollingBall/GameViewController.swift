@@ -17,6 +17,9 @@ class GameViewController: UIViewController, GameManager {
     @IBOutlet weak var cherryView: UIButton!
     @IBOutlet weak var lifeView: UIButton!
     
+    @IBOutlet weak var bulletView: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,7 @@ do {
         loadStartScene()
         updateLiveView()
         updateCherryView()
+        updateBulletsView()
     }
     
     func updateLiveView() {
@@ -44,6 +48,10 @@ do {
     }
     func updateCherryView() {
         cherryView.setTitle("\(ScoreManager.Score)", for: .normal)
+    }
+    
+    func updateBulletsView() {
+        bulletView.setTitle("\(ScoreManager.Bullets)", for: .normal)
     }
 
     func loadStartScene() {
@@ -74,6 +82,10 @@ do {
                }
             } else if level == 2 {
                 if let scene = Level2(fileNamed: "Level2") {
+                    
+                    bulletView.isHidden = false
+                    cherryView.setTitleColor(.white, for: .normal)
+                    lifeView.setTitleColor(.white, for: .normal)
                     scene.scaleMode = .aspectFill
                     scene.gameManager = self
                     view.presentScene(scene)
@@ -116,6 +128,7 @@ do {
         
         cherryView.isHidden = true
         lifeView.isHidden = true
+        bulletView.isHidden = true
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

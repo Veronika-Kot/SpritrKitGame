@@ -16,6 +16,7 @@ class Level2: SKScene {
     let swipeRight = UISwipeGestureRecognizer()
     let swipeLeft = UISwipeGestureRecognizer()
     let swipeUp = UISwipeGestureRecognizer()
+    let tap = UITapGestureRecognizer()
     
     var slideGesture = false
     
@@ -36,6 +37,7 @@ class Level2: SKScene {
             
             ball = aPlayer
             ball!.Setup()
+            ball!.setupBullets()
         }
         
         enumerateChildNodes(withName: "opossum") {
@@ -43,7 +45,6 @@ class Level2: SKScene {
             
             if let enemy:Enemy = node as? Enemy {
                 enemy.Setup(name: "opossum", repeatAnim: 2)
-                enemy.animateEnemyRun()
             }
         }
         
@@ -105,11 +106,33 @@ class Level2: SKScene {
         swipeUp.addTarget(self, action: #selector(Level1.swiped) )
         swipeUp.direction = .up
         self.view!.addGestureRecognizer(swipeUp)
+        
+        tap.addTarget(self, action: #selector(Level2.tapped) )
+        self.view!.addGestureRecognizer(tap)
     }
     
     @objc func swiped() {
         self.slideGesture = true
     }
+    
+    @objc func tapped() {
+           let bullet = ball!.bullets!.list[ball!.bullets!.key]
+        
+        if(ball!.bullets!.key == ball!.bullets!.list.count - 1)
+        {
+             ball!.bullets!.key = 0
+        } else {
+           ball!.bullets!.key += 1
+        }
+        
+           bullet.position = ball!.position
+           bullet.alpha = 1.0
+           bullet.physicsBody?.velocity = CGVector(dx:1000 * ball!.direction, dy: 0)
+           self.addChild(bullet)
+            
+           bullet.fadeAndRemove()
+           ScoreManager.Bullets -= 1
+       }
     
     func touchDown(atPoint pos : CGPoint) {
         
@@ -140,6 +163,7 @@ class Level2: SKScene {
         
         gameManager?.updateLiveView()
         gameManager?.updateCherryView()
+        gameManager?.updateBulletsView()
         
         if ScoreManager.Lives <= 0 {
             self.removeFromParent()
