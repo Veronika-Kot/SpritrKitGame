@@ -10,6 +10,7 @@
 import SpriteKit
 import GameplayKit
 
+//Base class for game objects
 class GameObject: SKSpriteNode, GameProtocol
 {
     var scale: CGFloat?

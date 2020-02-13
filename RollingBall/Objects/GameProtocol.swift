@@ -5,6 +5,7 @@
 //  Copyright © 2020 centennial. All rights reserved.
 //
 
+//Protocol for all GameObjects
 protocol GameProtocol
 {
     func Setup()

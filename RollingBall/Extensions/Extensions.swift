@@ -9,6 +9,7 @@
 
 import SpriteKit
 
+//Physics but mask for all game objects
 struct PhysicsCategory {
     static let none     : UInt32 = 0
     static let all      : UInt32 = UInt32.max
@@ -19,6 +20,7 @@ struct PhysicsCategory {
     static let enemy     : UInt32 = 16 //0b10000
 }
 
+//Extension for CGPoint to get usefull function
 extension CGPoint {
     
     func length() -> CGFloat {
@@ -30,6 +32,7 @@ extension CGPoint {
     }
 }
 
+//Extension for CGPoint to get usefull function
 extension SKScene: SKPhysicsContactDelegate {
     public func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
@@ -43,6 +46,7 @@ extension SKScene: SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
+        //Checking player / enemy collision
          if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
               (secondBody.categoryBitMask & PhysicsCategory.enemy != 0)) {
            
@@ -53,7 +57,7 @@ extension SKScene: SKPhysicsContactDelegate {
             }
         }
         
-        
+        //Checking player / pick-up-items collision
        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
         (secondBody.categoryBitMask & PhysicsCategory.item != 0)) {
             if let player = firstBody.node as? SKSpriteNode,
@@ -62,11 +66,13 @@ extension SKScene: SKPhysicsContactDelegate {
             }
         }
         
+         //Checking player / platform collision
         if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.platform != 0)) {
             ball?.canJump = true
         }
         
+        //Checking enemy / bullet collision
         if ((firstBody.categoryBitMask & PhysicsCategory.bullet != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.enemy != 0)) {
             if let bullet = firstBody.node as? Bulet,

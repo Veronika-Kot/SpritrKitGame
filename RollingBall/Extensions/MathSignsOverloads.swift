@@ -9,6 +9,7 @@
 
 import SpriteKit
 
+//Extra oparators overloads
 //https://www.raywenderlich.com/71-spritekit-tutorial-for-beginners
 func +(left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)

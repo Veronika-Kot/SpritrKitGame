@@ -10,6 +10,8 @@
 import SpriteKit
 import GameplayKit
 
+
+// Game scene for launch page
 class StartScene: SKScene {
     var cam: SKCameraNode?
     

@@ -11,6 +11,8 @@ import SpriteKit
 import GameplayKit
 import CoreMotion
 
+
+// Game scene of Level 2
 class Level2: SKScene {
     var cam: SKCameraNode?
     
