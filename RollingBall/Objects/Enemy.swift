@@ -9,6 +9,7 @@
 
 import SpriteKit
 
+//Class for both enemies types
 class Enemy: GameObject {
     
     enum Anim {
@@ -27,6 +28,7 @@ class Enemy: GameObject {
         super.init(coder: aDecoder)
     }
     
+    //Setup function, since init is called on sks file
     func Setup(name: String, repeatAnim: Int) {
         self.animationRepeat = repeatAnim
         
@@ -52,10 +54,11 @@ class Enemy: GameObject {
         }
         enemyDieFrames = dieFrames
         
-        
+        //Generic Settings
         self.setScale(1.7)
         self.texture = enemyRunFrames[0]
         
+        //Seting up Physics Body
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.texture!.size().width * 2, height: self.texture!.size().height * 2.5))
         
         if let physics = self.physicsBody {
@@ -80,6 +83,7 @@ class Enemy: GameObject {
         self.removeFromParent()
     }
     
+    //Called when hit with bullet
     func die(scene: SKScene){
         
         scene.run(SKAction.playSoundFileNamed("deathenemy", waitForCompletion: false))
@@ -88,7 +92,10 @@ class Enemy: GameObject {
         self.isDying = true
     }
     
+    //Animation fucntion, called from Update
     func animateEnemyRun() {
+        
+        //Checking animation state enum
         if animation == .move {
             if self.action(forKey: "enemyMoving") == nil {
                 let anumateAction = SKAction.repeat(
@@ -98,6 +105,7 @@ class Enemy: GameObject {
                                      restore: true), count: self.animationRepeat)
                 
                 let switchAction = SKAction.run({ [weak self] in
+                    //Switching direction
                     self!.xScale = self!.xScale * -1
                     self!.moveDirection *= -1
                 })
@@ -121,11 +129,11 @@ class Enemy: GameObject {
     
     override func Update() {
         if animation == .die {
-            
+            //Unset dynamic settings, so enemy stop moving whem it dies
             self.physicsBody?.isDynamic = false
-//            self.physicsBody?.velocity = CGVector(dx: 0.0, dy: self.physicsBody!.velocity.dy)
         } else {
         
+        //Updating velocity
         self.physicsBody?.velocity = CGVector(dx: 150.0 * self.moveDirection, dy: self.physicsBody!.velocity.dy)
         }
         self.animateEnemyRun()

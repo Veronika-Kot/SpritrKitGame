@@ -12,6 +12,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
+//Main view controller
 class GameViewController: UIViewController, GameManager {
     
     @IBOutlet weak var newGameButtom: UIButton!
@@ -30,19 +31,21 @@ class GameViewController: UIViewController, GameManager {
         
         endGameView.isHidden = true
         
-do {
-    let sounds:[String] = ["BoxCat_Games_-_25_-_Victory", "gotitem", "bullet", "deathenemy", "player-death"]
-    for sound in sounds {
-        let path: String = Bundle.main.path(forResource: sound, ofType: "mp3")!
-        let url: URL = URL(fileURLWithPath: path)
-        let player: AVAudioPlayer = try AVAudioPlayer(contentsOf: url)
-        player.prepareToPlay()
-        
+        //dowloding all sounds in advanced
+        do {
+            let sounds:[String] = ["BoxCat_Games_-_25_-_Victory", "gotitem", "bullet", "deathenemy", "player-death"]
+            for sound in sounds {
+                let path: String = Bundle.main.path(forResource: sound, ofType: "mp3")!
+                let url: URL = URL(fileURLWithPath: path)
+                let player: AVAudioPlayer = try AVAudioPlayer(contentsOf: url)
+                player.prepareToPlay()
+                
+            }
+        } catch {
+            
         }
-    } catch {
-    
-}
         
+        //Updating labels
         loadStartScene()
         updateLiveView()
         updateCherryView()
@@ -59,7 +62,8 @@ do {
     func updateBulletsView() {
         bulletView.setTitle("\(ScoreManager.Bullets)", for: .normal)
     }
-
+    
+    //Loading home/launch screen, hide labels
     func loadStartScene() {
         
         showMenu()
@@ -69,14 +73,15 @@ do {
                 scene.scaleMode = .aspectFill
                 view.presentScene(scene)
             }
-
+            
             view.ignoresSiblingOrder = true
-
+            
             view.showsFPS = true
             view.showsNodeCount = true
         }
     }
     
+    //Show and game overlay
     func showEndGame() {
         endGameView.isHidden = false
         
@@ -87,16 +92,17 @@ do {
     @IBAction func closeEndGame(_ sender: UIButton) {
         endGameView.isHidden = true
     }
-
+    
+    //Load 1 and 2 nd level game scenes
     func loadGameScene(level: Int) {
         if let view = self.view as! SKView? {
             
             if level == 1 {
-               if let scene = Level1(fileNamed: "Level1") {
-                   scene.scaleMode = .aspectFill
-                   scene.gameManager = self
-                   view.presentScene(scene)
-               }
+                if let scene = Level1(fileNamed: "Level1") {
+                    scene.scaleMode = .aspectFill
+                    scene.gameManager = self
+                    view.presentScene(scene)
+                }
             } else if level == 2 {
                 if let scene = Level2(fileNamed: "Level2") {
                     
@@ -109,11 +115,11 @@ do {
                 }
             }
             
-               
-               view.ignoresSiblingOrder = true
-               
-               view.showsFPS = true
-               view.showsNodeCount = true
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
     }
     
@@ -147,7 +153,7 @@ do {
         lifeView.isHidden = true
         bulletView.isHidden = true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -155,7 +161,7 @@ do {
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

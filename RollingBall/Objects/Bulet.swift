@@ -9,6 +9,7 @@
 
 import SpriteKit
 
+//Class for Bullet, the only objects which created from code
 class Bulet : GameObject
 {
     required init?(coder aDecoder: NSCoder) {
@@ -23,7 +24,7 @@ class Bulet : GameObject
     
     override func Setup() {
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        
+        //Setting up Physics body
         if let physics = self.physicsBody {
             physics.isDynamic = true
             physics.allowsRotation = true
@@ -35,6 +36,7 @@ class Bulet : GameObject
         }
     }
     
+    //Run Animation to fade out and removes from screen/parent
     func fadeAndRemove() {
       let fadeOutAction = SKAction.fadeOut(withDuration: 1.0)
       let remove        = SKAction.run({

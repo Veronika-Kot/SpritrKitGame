@@ -47,7 +47,7 @@ class Player : GameObject
         super.init(coder: aDecoder)
     }
     
-    //Setup function, init is called on sks file
+    //Setup function, since init is called on sks file
     override func Setup() {
         
         //Setups screen limits

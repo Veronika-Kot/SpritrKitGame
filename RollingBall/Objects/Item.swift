@@ -9,6 +9,7 @@
 
 import SpriteKit
 
+//Class for all Items (cherries, hurts, portal, ice)
 class Item : GameObject
 {
     required init?(coder aDecoder: NSCoder) {
@@ -16,9 +17,8 @@ class Item : GameObject
     
     }
     
+    //Setup function, since init is called on sks file
     override func Setup() {
-        
-//        self.texture = SKTexture(imageNamed: "cherry")
         
        self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.size)
         
