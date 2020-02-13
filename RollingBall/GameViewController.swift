@@ -19,13 +19,18 @@ class GameViewController: UIViewController, GameManager {
     
     @IBOutlet weak var bulletView: UIButton!
     
+    @IBOutlet weak var endGameView: UIView!
+    @IBOutlet weak var finalScore: UILabel!
+    @IBOutlet weak var howToPlayButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        endGameView.isHidden = true
+        
 do {
-    let sounds:[String] = ["magicalThing"]
+    let sounds:[String] = ["BoxCat_Games_-_25_-_Victory", "gotitem", "bullet", "deathenemy", "player-death"]
     for sound in sounds {
         let path: String = Bundle.main.path(forResource: sound, ofType: "mp3")!
         let url: URL = URL(fileURLWithPath: path)
@@ -71,6 +76,17 @@ do {
         }
     }
     
+    func showEndGame() {
+        endGameView.isHidden = false
+        
+        finalScore.text = "Your score: \(ScoreManager.Score)"
+    }
+    
+    
+    @IBAction func closeEndGame(_ sender: UIButton) {
+        endGameView.isHidden = true
+    }
+
     func loadGameScene(level: Int) {
         if let view = self.view as! SKView? {
             
@@ -118,14 +134,14 @@ do {
     
     func hideMenu() {
         newGameButtom.isHidden = true
-        
+        howToPlayButton.isHidden = true
         cherryView.isHidden = false
         lifeView.isHidden = false
     }
     
     func showMenu() {
         newGameButtom.isHidden = false
-        
+        howToPlayButton.isHidden = false
         cherryView.isHidden = true
         lifeView.isHidden = true
         bulletView.isHidden = true

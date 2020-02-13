@@ -13,4 +13,5 @@ protocol GameManager {
     func updateLiveView()
     func updateCherryView()
     func updateBulletsView()
+    func showEndGame()
 }

@@ -28,6 +28,7 @@ class Item : GameObject
             
             physics.categoryBitMask = PhysicsCategory.item
             physics.contactTestBitMask = PhysicsCategory.player
+            physics.collisionBitMask = PhysicsCategory.none
         }
     }
     

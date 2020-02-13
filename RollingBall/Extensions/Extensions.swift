@@ -45,8 +45,10 @@ extension SKScene: SKPhysicsContactDelegate {
          if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
               (secondBody.categoryBitMask & PhysicsCategory.enemy != 0)) {
            
-            if let enemy = secondBody.node as? SKSpriteNode {
-                ball?.GetItem(item: enemy, scene: self)
+            if let enemy = secondBody.node as? Enemy {
+                if enemy.animation != .die {
+                    ball?.GetItem(item: enemy, scene: self)
+                }
             }
         }
         
@@ -69,7 +71,7 @@ extension SKScene: SKPhysicsContactDelegate {
             if let bullet = firstBody.node as? Bulet,
                 let enemy = secondBody.node as? Enemy {
                 bullet.Reset()
-                enemy.die()
+                enemy.die(scene: self)
             }
         }
     }

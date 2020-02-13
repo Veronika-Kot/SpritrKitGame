@@ -36,7 +36,9 @@ class Bulet : GameObject
     
     func fadeAndRemove() {
       let fadeOutAction = SKAction.fadeOut(withDuration: 1.0)
-      let remove        = SKAction.run({ self.removeFromParent }())
+      let remove        = SKAction.run({
+            self.removeFromParent()
+        })
       let sequence      = SKAction.sequence([fadeOutAction, remove])
       self.run(sequence)
     }

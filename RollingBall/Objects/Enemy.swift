@@ -62,7 +62,7 @@ class Enemy: GameObject {
             physics.allowsRotation = false
             physics.angularVelocity = 0
             physics.isDynamic = true
-            physics.affectedByGravity = (name == "eagle") ? false: true
+            physics.affectedByGravity = false //(name == "eagle") ? false: true
             physics.linearDamping = 0.5
             physics.angularDamping = 0.5
             physics.friction = 0
@@ -71,6 +71,7 @@ class Enemy: GameObject {
             physics.categoryBitMask = PhysicsCategory.enemy
             physics.contactTestBitMask = PhysicsCategory.bullet
             physics.contactTestBitMask = PhysicsCategory.player
+            physics.collisionBitMask = PhysicsCategory.none
         }
     }
     
@@ -78,7 +79,10 @@ class Enemy: GameObject {
         self.removeFromParent()
     }
     
-    func die(){
+    func die(scene: SKScene){
+        
+        scene.run(SKAction.playSoundFileNamed("deathenemy", waitForCompletion: false))
+        
         self.animation = .die
         self.isDying = true
     }
@@ -116,7 +120,9 @@ class Enemy: GameObject {
     
     override func Update() {
         if animation == .die {
-            self.physicsBody?.velocity = CGVector(dx: 0.0, dy: self.physicsBody!.velocity.dy)
+            
+            self.physicsBody?.isDynamic = false
+//            self.physicsBody?.velocity = CGVector(dx: 0.0, dy: self.physicsBody!.velocity.dy)
         } else {
         
         self.physicsBody?.velocity = CGVector(dx: 150.0 * self.moveDirection, dy: self.physicsBody!.velocity.dy)

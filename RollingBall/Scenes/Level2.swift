@@ -21,12 +21,15 @@ class Level2: SKScene {
     var slideGesture = false
     
     var gameManager: GameManager?
-    
-    var thePlayer: Player?
+    var portal: Item?
     
     override func didMove(to view: SKView) {
         
-        backgroundColor = UIColor.white
+        let backgroundSound = SKAudioNode(fileNamed: "BoxCat_Games_-_25_-_Victory.mp3")
+        backgroundSound.autoplayLooped = true
+        backgroundSound.run(SKAction.changeVolume(to: Float(0.25), duration: 0))
+        self.addChild(backgroundSound)
+    
         physicsWorld.contactDelegate = self
         
         motionManager.accelerometerUpdateInterval = 0.1
@@ -44,7 +47,7 @@ class Level2: SKScene {
             node, stop in
             
             if let enemy:Enemy = node as? Enemy {
-                enemy.Setup(name: "opossum", repeatAnim: 2)
+                enemy.Setup(name: "opossum", repeatAnim: 3)
             }
         }
         
@@ -52,7 +55,7 @@ class Level2: SKScene {
             node, stop in
             
             if let enemy:Enemy = node as? Enemy {
-                enemy.Setup(name: "eagle", repeatAnim: 5)
+                enemy.Setup(name: "eagle", repeatAnim: 8)
                 enemy.animateEnemyRun()
             }
         }
@@ -83,12 +86,26 @@ class Level2: SKScene {
             }
         }
         
+        enumerateChildNodes(withName: "bullet") {
+            node, stop in
+            
+            if let bullet:Item = node as? Item {
+                bullet.texture = SKTexture(imageNamed: "BulletImage")
+                bullet.Setup()
+            }
+        }
+        
         enumerateChildNodes(withName: "ice") {
             node, stop in
             
             if let ice:Item = node as? Item {
                 ice.Setup()
             }
+        }
+        
+        if let aPortal = self.childNode(withName: "portal_to_end") as? Item {
+            self.portal = aPortal
+            portal!.Setup()
         }
         
         cam = childNode(withName: "camera") as? SKCameraNode
@@ -109,6 +126,12 @@ class Level2: SKScene {
         
         tap.addTarget(self, action: #selector(Level2.tapped) )
         self.view!.addGestureRecognizer(tap)
+        
+        let oneRotation:SKAction = SKAction.rotate(byAngle: CGFloat.pi * 2, duration: 1)
+        
+        let repeatRotation:SKAction = SKAction.repeatForever(oneRotation)
+                
+        self.portal?.run(repeatRotation)
     }
     
     @objc func swiped() {
@@ -116,23 +139,26 @@ class Level2: SKScene {
     }
     
     @objc func tapped() {
-           let bullet = ball!.bullets!.list[ball!.bullets!.key]
         
-        if(ball!.bullets!.key == ball!.bullets!.list.count - 1)
-        {
-             ball!.bullets!.key = 0
-        } else {
-           ball!.bullets!.key += 1
-        }
-        
-           bullet.position = ball!.position
-           bullet.alpha = 1.0
-           bullet.physicsBody?.velocity = CGVector(dx:1000 * ball!.direction, dy: 0)
-           self.addChild(bullet)
+        if(ScoreManager.Bullets > 0) {
+            let bullet = ball!.bullets!.list[ball!.bullets!.key]
             
-           bullet.fadeAndRemove()
-           ScoreManager.Bullets -= 1
-       }
+            if(ball!.bullets!.key == ball!.bullets!.list.count - 1)
+            {
+                ball!.bullets!.key = 0
+            } else {
+                ball!.bullets!.key += 1
+            }
+            
+            bullet.position = ball!.position
+            bullet.alpha = 1.0
+            bullet.physicsBody?.velocity = CGVector(dx:1000 * ball!.direction, dy: 0)
+            self.addChild(bullet)
+            
+            bullet.fadeAndRemove()
+            ScoreManager.Bullets -= 1
+        }
+    }
     
     func touchDown(atPoint pos : CGPoint) {
         
@@ -169,6 +195,7 @@ class Level2: SKScene {
             self.removeFromParent()
             
             gameManager?.loadStartScene()
+            gameManager?.showEndGame()
         }
         
         if ball?.canJump ?? true && self.slideGesture {
@@ -203,6 +230,12 @@ class Level2: SKScene {
         
         cam?.position = CGPoint(x: cameraX2,
                                 y: self.size.height / 2)
+        
+        if ball!.gotToEnd {
+             self.removeFromParent()
+             gameManager?.loadStartScene()
+             gameManager?.showEndGame()
+        }
     }
     
     override public func didBegin(_ contact: SKPhysicsContact) {

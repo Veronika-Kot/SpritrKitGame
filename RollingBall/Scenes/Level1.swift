@@ -29,9 +29,11 @@ class Level1: SKScene {
     
     override func didMove(to view: SKView) {
         
-//        let backgroundSound = SKAudioNode(fileNamed: "2630541_riddle-for-the-witty_by_ionics_preview.mp3")
-//        backgroundSound.autoplayLooped = true
-//        self.addChild(backgroundSound)
+        let backgroundSound = SKAudioNode(fileNamed: "BoxCat_Games_-_25_-_Victory.mp3")
+        backgroundSound.autoplayLooped = true
+        backgroundSound.run(SKAction.changeVolume(to: Float(0.25), duration: 0))
+        self.addChild(backgroundSound)
+       
         
         backgroundColor = UIColor.white
         physicsWorld.contactDelegate = self
@@ -145,10 +147,12 @@ class Level1: SKScene {
             self.removeFromParent()
             
             gameManager?.loadStartScene()
+            gameManager?.showEndGame()
         }
         
-        if  ball!.goTo2ndLevel {
-             gameManager?.loadGameScene(level: 2)
+        if ball!.goForward {
+            gameManager?.loadGameScene(level: 2)
+            ball!.goForward = false
         }
         
         if ball?.canJump ?? true && self.slideGesture {

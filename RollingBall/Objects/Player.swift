@@ -20,7 +20,8 @@ class Player : GameObject
     var canJump = false
     var dying = false
     var hitObsticle = false
-    var goTo2ndLevel = false
+    var goForward = false
+    var gotToEnd = false
     var jumping = false
     var direction:CGFloat = 1.0
     private var playerRunFrames: [SKTexture] = []
@@ -28,15 +29,22 @@ class Player : GameObject
     private var playerJumpFrames: [SKTexture] = []
     private var playerDieFrames: [SKTexture] = []
     
-    var bullets: (key: Int, list:[Bulet])?
+    var bullets: (key: Int, list: [Bulet])?
     
     var animation: anim = .run
+    
+    var xLimitLeft: CGFloat?
+    var xLimitRight: CGFloat?
+    var yLimit: CGFloat?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override func Setup() {
+        xLimitLeft = self.size.width * 0.5 + self.size.width * 0.5
+        xLimitRight = 10000.0 - self.size.width * 0.5 - self.size.width * 0.5
+        yLimit = 750.0 - self.size.height * 0.5
         
         //Setup running animation
         let runAnimatedAtlas = SKTextureAtlas(named: "run")
@@ -107,17 +115,21 @@ class Player : GameObject
             physics.collisionBitMask = PhysicsCategory.platform
             
             
+            self.goForward = false
         }
     }
     
     func setupBullets() {
-        var tempArray = [Bulet]()
+        var tempArrayBullet = [Bulet]()
         for _ in 1...50 {
             let bullet = Bulet()
-            tempArray.append(bullet)
+            tempArrayBullet.append(bullet)
         }
         
-        self.bullets = (key: 0, list: tempArray);
+        
+        self.bullets = (key: 0, list: tempArrayBullet);
+        
+        //self.goingForward = false
     }
     
     override func Reset() {
@@ -168,7 +180,7 @@ class Player : GameObject
                 })
             }
         } else if animation == .die {
-            
+        
             self.removeAction(forKey: "animateRun")
             self.removeAction(forKey: "animateIdle")
             
@@ -197,21 +209,36 @@ class Player : GameObject
         if (item.name == "heart") {
             ScoreManager.Lives += 1
             item.removeFromParent()
-            scene.run(SKAction.playSoundFileNamed("magicalThing", waitForCompletion: false))
+            scene.run(SKAction.playSoundFileNamed("gotitem", waitForCompletion: false))
         }
         
         if (item.name == "ice" && !hitObsticle) {
+            scene.run(SKAction.playSoundFileNamed("player-death", waitForCompletion: false))
+                       
             hitObsticle = true
             ScoreManager.Lives -= 1
         }
         
         if ((item.name == "opossum" || item.name == "eagle") && !hitObsticle) {
+            scene.run(SKAction.playSoundFileNamed("player-death", waitForCompletion: false))
+                       
             hitObsticle = true
             ScoreManager.Lives -= 1
         }
         
         if (item.name == "portal") {
-            self.goTo2ndLevel = true
+            self.goForward = true
+        }
+        
+        if (item.name == "portal_to_end") {
+            self.gotToEnd = true
+        }
+        
+        if (item.name == "bullet") {
+             item.removeFromParent()
+             ScoreManager.Bullets += 1
+            
+              scene.run(SKAction.playSoundFileNamed("bullet", waitForCompletion: false))
         }
     }
     
@@ -230,12 +257,13 @@ class Player : GameObject
             return
         }
         
-        let xLimitLeft = self.size.width * 0.5 + self.size.width * 0.5
-        let xLimitRight = 10000.0 - self.size.width * 0.5 - self.size.width * 0.5
-        
         if let accelerometerData = motionManager.accelerometerData {
             
-            if (accelerometerData.acceleration.y < -0.2 && self.position.x <= xLimitRight) {
+            if self.position.y > self.yLimit! {
+                self.position.y = self.yLimit!
+            }
+            
+            if (accelerometerData.acceleration.y < -0.2 && self.position.x <= self.xLimitRight!) {
                 
                 self.xScale = abs(self.xScale) * 1
                 self.animation = self.animation == .runJump ? .runJump : .run
@@ -245,7 +273,7 @@ class Player : GameObject
                 
                 self.physicsBody?.velocity = CGVector(dx: velX, dy: self.physicsBody!.velocity.dy)
                 
-            } else if (accelerometerData.acceleration.y > 0.2 && self.position.x >= xLimitLeft) {
+            } else if (accelerometerData.acceleration.y > 0.2 && self.position.x >= self.xLimitLeft!) {
                 
                 self.xScale = abs(self.xScale) * -1
                 self.animation = self.animation == .runJump ? .runJump : .run

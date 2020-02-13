@@ -10,11 +10,15 @@
 		7B0ECCFE23F1097400FDCA98 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0ECCFD23F1097400FDCA98 /* Enemy.swift */; };
 		7B0ECD0023F10E9F00FDCA98 /* opossum.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B0ECCFF23F10E9F00FDCA98 /* opossum.atlas */; };
 		7B0ECD0223F1204400FDCA98 /* eagle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B0ECD0123F1204400FDCA98 /* eagle.atlas */; };
-		7B0ECD0523F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B0ECD0423F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 */; };
 		7B43540E23E8B93C000306C2 /* run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B43540D23E8B93C000306C2 /* run.atlas */; };
 		7B43541A23E8F72F000306C2 /* jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B43541923E8F72F000306C2 /* jump.atlas */; };
 		7B4958A023F2638B001F746F /* enemy-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B49589F23F2638B001F746F /* enemy-death.atlas */; };
 		7B4958A223F27615001F746F /* hurt.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B4958A123F27615001F746F /* hurt.atlas */; };
+		7B4958A423F3952F001F746F /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4958A323F3952F001F746F /* HowToPlayViewController.swift */; };
+		7B4958A623F3CBEC001F746F /* BoxCat_Games_-_25_-_Victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4958A523F3CBEC001F746F /* BoxCat_Games_-_25_-_Victory.mp3 */; };
+		7B4958A823F3CE40001F746F /* bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4958A723F3CE40001F746F /* bullet.mp3 */; };
+		7B4958AA23F3CFC6001F746F /* deathenemy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4958A923F3CFC6001F746F /* deathenemy.mp3 */; };
+		7B4958AE23F3D33E001F746F /* player-death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4958AD23F3D33E001F746F /* player-death.mp3 */; };
 		7B5FB72923E4E54E0040EEBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB72823E4E54E0040EEBC /* AppDelegate.swift */; };
 		7B5FB72D23E4E54E0040EEBC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B5FB72C23E4E54E0040EEBC /* Actions.sks */; };
 		7B5FB73123E4E54E0040EEBC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB73023E4E54E0040EEBC /* GameViewController.swift */; };
@@ -29,7 +33,6 @@
 		7B5FB74E23E6132E0040EEBC /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FB74D23E6132E0040EEBC /* Platform.swift */; };
 		7B8438AE23F1EFCB0025446F /* idle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B8438AD23F1EFCB0025446F /* idle.atlas */; };
 		7B8438B223F2179A0025446F /* gotitem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B8438B123F2179A0025446F /* gotitem.mp3 */; };
-		7B8438B823F21AAC0025446F /* magicalThing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B8438B723F21AAC0025446F /* magicalThing.mp3 */; };
 		7B8438BA23F223C50025446F /* Bulet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8438B923F223C50025446F /* Bulet.swift */; };
 		7BA2F8F823E7846F00E3A24E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2F8F723E7846F00E3A24E /* Item.swift */; };
 		7BA2F8FA23E7BCAD00E3A24E /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7BA2F8F923E7BCAD00E3A24E /* StartScene.sks */; };
@@ -46,11 +49,15 @@
 		7B0ECCFD23F1097400FDCA98 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		7B0ECCFF23F10E9F00FDCA98 /* opossum.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = opossum.atlas; sourceTree = "<group>"; };
 		7B0ECD0123F1204400FDCA98 /* eagle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = eagle.atlas; sourceTree = "<group>"; };
-		7B0ECD0423F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2630541_riddle-for-the-witty_by_ionics_preview.mp3"; sourceTree = "<group>"; };
 		7B43540D23E8B93C000306C2 /* run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = run.atlas; sourceTree = "<group>"; };
 		7B43541923E8F72F000306C2 /* jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = jump.atlas; sourceTree = "<group>"; };
 		7B49589F23F2638B001F746F /* enemy-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "enemy-death.atlas"; sourceTree = "<group>"; };
 		7B4958A123F27615001F746F /* hurt.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = hurt.atlas; sourceTree = "<group>"; };
+		7B4958A323F3952F001F746F /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
+		7B4958A523F3CBEC001F746F /* BoxCat_Games_-_25_-_Victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "BoxCat_Games_-_25_-_Victory.mp3"; sourceTree = "<group>"; };
+		7B4958A723F3CE40001F746F /* bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bullet.mp3; sourceTree = "<group>"; };
+		7B4958A923F3CFC6001F746F /* deathenemy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deathenemy.mp3; sourceTree = "<group>"; };
+		7B4958AD23F3D33E001F746F /* player-death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "player-death.mp3"; sourceTree = "<group>"; };
 		7B5FB72523E4E54E0040EEBC /* RollingBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollingBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5FB72823E4E54E0040EEBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5FB72C23E4E54E0040EEBC /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -67,7 +74,6 @@
 		7B5FB74D23E6132E0040EEBC /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		7B8438AD23F1EFCB0025446F /* idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = idle.atlas; sourceTree = "<group>"; };
 		7B8438B123F2179A0025446F /* gotitem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gotitem.mp3; sourceTree = "<group>"; };
-		7B8438B723F21AAC0025446F /* magicalThing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = magicalThing.mp3; sourceTree = "<group>"; };
 		7B8438B923F223C50025446F /* Bulet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulet.swift; sourceTree = "<group>"; };
 		7BA2F8F723E7846F00E3A24E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7BA2F8F923E7BCAD00E3A24E /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
@@ -94,9 +100,11 @@
 		7B0ECD0323F1E9FF00FDCA98 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				7B8438B723F21AAC0025446F /* magicalThing.mp3 */,
+				7B4958A523F3CBEC001F746F /* BoxCat_Games_-_25_-_Victory.mp3 */,
+				7B4958A923F3CFC6001F746F /* deathenemy.mp3 */,
 				7B8438B123F2179A0025446F /* gotitem.mp3 */,
-				7B0ECD0423F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 */,
+				7B4958AD23F3D33E001F746F /* player-death.mp3 */,
+				7B4958A723F3CE40001F746F /* bullet.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 				7B5FB72C23E4E54E0040EEBC /* Actions.sks */,
 				7B5FB73023E4E54E0040EEBC /* GameViewController.swift */,
 				7B5FB73223E4E54E0040EEBC /* Main.storyboard */,
+				7B4958A323F3952F001F746F /* HowToPlayViewController.swift */,
 				7B5FB73523E4E5500040EEBC /* Assets.xcassets */,
 				7B5FB73723E4E5500040EEBC /* LaunchScreen.storyboard */,
 				7B5FB73A23E4E5510040EEBC /* Info.plist */,
@@ -255,21 +264,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B0ECD0223F1204400FDCA98 /* eagle.atlas in Resources */,
+				7B4958A823F3CE40001F746F /* bullet.mp3 in Resources */,
 				7B8438AE23F1EFCB0025446F /* idle.atlas in Resources */,
 				7B5FB73423E4E54E0040EEBC /* Main.storyboard in Resources */,
 				7B8438B223F2179A0025446F /* gotitem.mp3 in Resources */,
+				7B4958AE23F3D33E001F746F /* player-death.mp3 in Resources */,
 				7B43540E23E8B93C000306C2 /* run.atlas in Resources */,
 				7B4958A023F2638B001F746F /* enemy-death.atlas in Resources */,
 				7B5FB73623E4E5500040EEBC /* Assets.xcassets in Resources */,
-				7B0ECD0523F1EA0B00FDCA98 /* 2630541_riddle-for-the-witty_by_ionics_preview.mp3 in Resources */,
 				7B5FB73923E4E5500040EEBC /* LaunchScreen.storyboard in Resources */,
 				7BA2F8FA23E7BCAD00E3A24E /* StartScene.sks in Resources */,
 				7B5FB72D23E4E54E0040EEBC /* Actions.sks in Resources */,
+				7B4958A623F3CBEC001F746F /* BoxCat_Games_-_25_-_Victory.mp3 in Resources */,
 				7B4958A223F27615001F746F /* hurt.atlas in Resources */,
 				7BA2F90323E7D21200E3A24E /* Level2.sks in Resources */,
+				7B4958AA23F3CFC6001F746F /* deathenemy.mp3 in Resources */,
 				7BC41AA923E7586800B7FCC3 /* Level1.sks in Resources */,
 				7B0ECD0023F10E9F00FDCA98 /* opossum.atlas in Resources */,
-				7B8438B823F21AAC0025446F /* magicalThing.mp3 in Resources */,
 				7B43541A23E8F72F000306C2 /* jump.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +300,7 @@
 				7B5FB74423E4E6730040EEBC /* GameObjects.swift in Sources */,
 				7BA2F90523E7D23B00E3A24E /* Level2.swift in Sources */,
 				7B5FB74223E4E6200040EEBC /* GameProtocol.swift in Sources */,
+				7B4958A423F3952F001F746F /* HowToPlayViewController.swift in Sources */,
 				7B5FB73123E4E54E0040EEBC /* GameViewController.swift in Sources */,
 				7B5FB74B23E4EA020040EEBC /* Player.swift in Sources */,
 				7B5FB74723E4E6DD0040EEBC /* MathSignsOverloads.swift in Sources */,
