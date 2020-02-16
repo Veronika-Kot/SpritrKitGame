@@ -12,7 +12,6 @@
 protocol GameManager {
     func loadStartScene()
     func loadGameScene(level:Int)
-    func loadFinishScene()
     func updateLiveView()
     func updateCherryView()
     func updateBulletsView()

@@ -290,7 +290,7 @@ class Player : GameObject
             
             //Checking Y limits
             if self.position.y > self.yLimit! {
-                self.position.y = self.yLimit!
+                self.position.y = self.yLimit! - self.size.height
             }
             
             //Checking if device rotateed right

@@ -36,13 +36,14 @@ class Level1: SKScene {
     
     override func didMove(to view: SKView) {
         
+        //scaling scene so it matches all device sizes
+        self.scaleMode = .fill
+        
         //Add background sound
         let backgroundSound = SKAudioNode(fileNamed: "BoxCat_Games_-_25_-_Victory.mp3")
         backgroundSound.autoplayLooped = true
         backgroundSound.run(SKAction.changeVolume(to: Float(0.25), duration: 0))
         self.addChild(backgroundSound)
-       
-        //backgroundColor = UIColor.white
         
         //Set physics world
         physicsWorld.contactDelegate = self
@@ -159,7 +160,7 @@ class Level1: SKScene {
         //Checking if player has enough lives
         if ScoreManager.Lives <= 0 {
             self.removeFromParent()
-            
+
             gameManager?.loadStartScene()
             gameManager?.showEndGame()
         }

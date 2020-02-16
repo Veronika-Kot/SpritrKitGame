@@ -33,6 +33,9 @@ class Level2: SKScene {
     
     override func didMove(to view: SKView) {
         
+        //scaling scene so it matches all device sizes
+        self.scaleMode = .fill
+        
         //Add background sound
         let backgroundSound = SKAudioNode(fileNamed: "BoxCat_Games_-_25_-_Victory.mp3")
         backgroundSound.autoplayLooped = true

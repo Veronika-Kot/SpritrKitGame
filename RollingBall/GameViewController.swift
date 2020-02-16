@@ -14,7 +14,6 @@ import AVFoundation
 
 //Main view controller
 class GameViewController: UIViewController, GameManager {
-    
     @IBOutlet weak var newGameButtom: UIButton!
     @IBOutlet weak var cherryView: UIButton!
     @IBOutlet weak var lifeView: UIButton!
@@ -75,22 +74,25 @@ class GameViewController: UIViewController, GameManager {
             }
             
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
     
-    //Show and game overlay
+    //Show game-over overlay
     func showEndGame() {
         endGameView.isHidden = false
+        
+        newGameButtom.isHidden = true
+        howToPlayButton.isHidden = true
         
         finalScore.text = "Your score: \(ScoreManager.Score)"
     }
     
-    
+    //Close game-over overlay
     @IBAction func closeEndGame(_ sender: UIButton) {
         endGameView.isHidden = true
+        
+        newGameButtom.isHidden = false
+        howToPlayButton.isHidden = false
     }
     
     //Load 1 and 2 nd level game scenes
@@ -117,28 +119,24 @@ class GameViewController: UIViewController, GameManager {
             
             
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
-    
-    func loadFinishScene() {
-        
-    }
+
     
     override var shouldAutorotate: Bool {
         return true
     }
     
+    //Start new game
     @IBAction func newGamePressed(_ sender: UIButton) {
-        ScoreManager.Lives = 7
+        ScoreManager.Lives = 1
         ScoreManager.Score = 0
         
         loadGameScene(level: 1)
         hideMenu()
     }
     
+    //the function to hide all assets from the menu screen
     func hideMenu() {
         newGameButtom.isHidden = true
         howToPlayButton.isHidden = true
@@ -146,6 +144,7 @@ class GameViewController: UIViewController, GameManager {
         lifeView.isHidden = false
     }
     
+     //the function to show all assets from the menu screen
     func showMenu() {
         newGameButtom.isHidden = false
         howToPlayButton.isHidden = false
