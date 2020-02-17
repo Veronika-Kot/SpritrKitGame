@@ -129,7 +129,7 @@ class GameViewController: UIViewController, GameManager {
     
     //Start new game
     @IBAction func newGamePressed(_ sender: UIButton) {
-        ScoreManager.Lives = 1
+        ScoreManager.Lives = 7
         ScoreManager.Score = 0
         
         loadGameScene(level: 1)

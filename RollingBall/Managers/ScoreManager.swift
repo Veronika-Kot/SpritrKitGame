@@ -13,6 +13,6 @@ import UIKit
 class ScoreManager
 {
     public static var Score: Int = 0
-    public static var Lives: Int = 1
+    public static var Lives: Int = 7
     public static var Bullets: Int = 5
 }
